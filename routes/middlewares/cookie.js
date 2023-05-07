@@ -12,8 +12,8 @@ module.exports = (req, res, next) => {
     let cookie = req.cookies.liman;
     if (typeof cookie !== "undefined") {
         try {
-            let privateKey = fs.readFileSync(nodePath.join(__dirname, "../../data/keys/private.pem"));
-            let decoded = jwt.verify(cookie, privateKey, { algorithms: "RS256" });
+            let publicKey = fs.readFileSync(nodePath.join(__dirname, "../../data/keys/public.pem"));
+            let decoded = jwt.verify(cookie, publicKey, { algorithms: "RS256" });
             if (!decoded) {
                 console.log("Login Attemp: Invalid cookie");
                 res.redirect("/login");
