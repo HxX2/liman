@@ -80,7 +80,7 @@ router.post("/", async (req, res) => {
             const { publicKey, privateKey } = generateKeyPairSync("rsa", {
                 modulusLength: 4096,
                 publicKeyEncoding: {
-                    type: "spki",
+                    type: "pkcs1",
                     format: "pem"
                 },
                 privateKeyEncoding: {
